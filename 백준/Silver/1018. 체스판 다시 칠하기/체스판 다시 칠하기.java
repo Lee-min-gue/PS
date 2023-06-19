@@ -27,12 +27,7 @@ class Main {
         for(int i=0;i<M;i++){
             for(int j=0;j<N;j++){
                 int k=Check(arr,i,j);
-                int p=Check2(arr,i,j);
-                if(k<Min)
-                    Min=k;
-                if(p<Min)
-                    Min=p;
-
+                Min=Math.min(Min,k);
             }
         }
         System.out.println(Min);
@@ -54,24 +49,6 @@ class Main {
             }
             flag=!flag;
         }
-        return count;
-    }
-    static int Check2(boolean arr[][],int startM,int startN){
-        boolean flag=arr[startM][startN];
-        int count=0;
-        //검사하기
-        for(int i=startM;i<startM+8;i++){
-            for(int j=startN;j<startN+8;j++){
-                if(flag==arr[i][j]){
-                    count++;
-                    flag=!flag;
-                }
-                else {
-                    flag=arr[i][j];
-                }
-            }
-            flag=!flag;
-        }
-        return count;
+        return Math.min(count,64-count);
     }
 }
