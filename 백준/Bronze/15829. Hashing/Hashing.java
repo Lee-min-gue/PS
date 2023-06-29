@@ -1,17 +1,21 @@
- import java.util.*;
-    public class Main {
-        public static void main(String[] args) {
-            Scanner sc=new Scanner(System.in);
-            int L=sc.nextInt();
-            String string=sc.next();
-            int sum=0;
-            for(int i=0;i<L;i++){
-                int out=(string.charAt(i)-96);
-                for(int k=0;k<i;k++){
-                    out*=31;
-                }
-                sum+=out;
-            }
-            System.out.println(sum);
+import java.util.*;
+import java.io.*;
+
+class Main {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int length = Integer.parseInt(br.readLine());
+        int r = 31;
+        int m = 1234567891;
+        long sum = 0;
+        long mod = 1;
+        char[] ch = br.readLine().toCharArray();
+
+        for(int i = 0; i < length; i++) {
+
+            sum += (((int)((ch[i] - 'a') + 1)) * mod);
+            mod = (r * mod) % m;
         }
+        System.out.println(sum % m);
     }
+}
